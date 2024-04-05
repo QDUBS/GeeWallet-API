@@ -1,0 +1,5 @@
+geewallet-env/
+
+*.env
+*.env.*
+env.*
