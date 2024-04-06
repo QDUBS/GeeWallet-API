@@ -13,7 +13,7 @@ pipeline {
         stage('Push Docker Image to Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry('https://your-docker-registry-url', 'your-docker-credentials-id') {
+                    docker.withRegistry('DOCKER-REGISTRY-URL', 'DOCKER-CRED-ID') {
                         docker.image('qdubs/geewallet-api:latest').push('latest')
                     }
                 }
@@ -24,8 +24,8 @@ pipeline {
             steps {
                 script {
                     kubernetesDeploy(
-                        kubeconfigId: 'your-kubeconfig-credentials-id',
-                        configs: 'your-kubernetes-yaml-directory/*.yaml'
+                        kubeconfigId: 'KUBE-CRED-ID',
+                        configs: 'kubernetes/*.yaml'
                     )
                 }
             }
